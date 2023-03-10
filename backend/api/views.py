@@ -13,9 +13,10 @@ def api_home(request, *args, **kwargs):
     #data = request.data
     serializer = ProductSerializer(data=request.data)
     if serializer.is_valid():
-        instance = serializer.save()
-        print(instance)
+        #instance = serializer.save()
+        print(serializer.data)
         return Response(serializer.data)
+    return Response({"invalid": "not good data"}, status=400)
 
 # @api_view(["GET"])
 # def api_home(request, *args, **kwargs):
